@@ -1,5 +1,5 @@
 {
-    "name": "magentix/sylius-pickup-plugin",
+    "name": "waaz/sylius-pickup-plugin",
     "type": "sylius-plugin",
     "description": "Pickup Shipping plugin for Sylius.",
     "license": "MIT",
