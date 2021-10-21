@@ -1,6 +1,10 @@
 services:
-    Magentix\SyliusPickupPlugin\Controller\PickupController:
+    magentix.sylius_pickup.controller:
+        class: Magentix\SyliusPickupPlugin\Controller\PickupController
         public: true
         arguments:
             - "@sylius.registry.shipping_calculator"
             - "@sylius.repository.country"
+        calls:
+            - [setContainer, ['@service_container']]
+           
