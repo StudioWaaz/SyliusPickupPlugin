@@ -151,7 +151,9 @@ var mapOsmClass = function (options) {
 
         if (vars.mapId) {
             var map = L.map(vars.mapId, {dragging: !L.Browser.mobile, touchZoom: true});
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}'+ (L.Browser.retina ? '@2x.png' : '.png'), {
+                attribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
                 maxZoom: 18,
                 id: 'mapbox.streets'
             }).addTo(map);
