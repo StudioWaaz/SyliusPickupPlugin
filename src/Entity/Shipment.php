@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Core\Model\Shipment as BaseShipment;
 
 /**
- * @ORM\MappedSuperclass
+ * @ORM\Entity
  * @ORM\Table("sylius_shipment")
  */
 class Shipment extends BaseShipment
