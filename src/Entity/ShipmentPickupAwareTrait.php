@@ -5,18 +5,12 @@
  * @license   https://opensource.org/licenses/MIT MIT License
  * @link      https://github.com/magentix/pickup-plugin
  */
+
 declare(strict_types=1);
 
 namespace Magentix\SyliusPickupPlugin\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Sylius\Component\Core\Model\Shipment as BaseShipment;
-
-/**
- * @ORM\Entity
- * @ORM\Table("sylius_shipment")
- */
-class Shipment extends BaseShipment
+trait ShipmentPickupAwareTrait
 {
     /**
      * @var string $pickup_id|null
