@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace Magentix\SyliusPickupPlugin\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 trait ShipmentPickupAwareTrait
 {
     /**

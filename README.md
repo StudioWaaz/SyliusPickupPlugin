@@ -29,6 +29,28 @@ magentix_sylius_pickup_plugin:
     resource: "@MagentixSyliusPickupPlugin/Resources/config/routing.yml"
 ```
 
+Add a trait to your shipment class
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Entity\Shipping;
+
+use Doctrine\ORM\Mapping as ORM;
+use Magentix\SyliusPickupPlugin\Entity\ShipmentPickupAwareTrait;
+use Sylius\Component\Core\Model\Shipment as BaseShipment;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="sylius_shipment")
+ */
+class Shipment extends BaseShipment
+{
+    use ShipmentPickupAwareTrait;
+}
+```
+
 Finish the installation by updating the database schema and installing assets:
 
 ```bash
