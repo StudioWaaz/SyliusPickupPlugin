@@ -72,6 +72,10 @@ final class CheckoutShipmentTypeExtension extends AbstractTypeExtension
             ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
                 $data = $event->getData();
 
+                if (false === array_key_exists('method', $data)) {
+                    return;
+                }
+
                 $method = $this->shippingMethodRepository->findOneBy(['code' => $data['method']]);
                 if ($method) {
                     $calculator = $this->calculatorRegistry->get($method->getCalculator());
