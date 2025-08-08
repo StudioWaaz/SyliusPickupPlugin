@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Magentix\SyliusPickupPlugin\EventListener;
 
 use Magentix\SyliusPickupPlugin\Shipping\Calculator\CalculatorInterface as PickupCalculatorInterface;
+use Sylius\Component\Core\Model\ShipmentInterface;
 use Sylius\Component\Core\Repository\ShippingMethodRepositoryInterface;
 use Sylius\Component\Core\Repository\ShipmentRepositoryInterface;
 use Sylius\Component\Registry\ServiceRegistryInterface;
@@ -56,6 +57,10 @@ class PickupListener
     {
         $shipment = $order->getShipments()->current();
         $pickupAddress = [];
+
+        if (!$shipment instanceof ShipmentInterface) {
+            return $pickupAddress;
+        }
 
         if ($shipment->getPickupId()) {
             $current = $this->shipmentRepository->find($shipment->getId());

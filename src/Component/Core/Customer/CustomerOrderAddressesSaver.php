@@ -15,6 +15,7 @@ use Sylius\Component\Core\Customer\CustomerAddressAdderInterface;
 use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\CustomerInterface;
 use Sylius\Component\Core\Model\OrderInterface;
+use Sylius\Component\Core\Model\ShipmentInterface;
 
 final class CustomerOrderAddressesSaver implements OrderAddressesSaverInterface
 {
@@ -43,7 +44,12 @@ final class CustomerOrderAddressesSaver implements OrderAddressesSaverInterface
         }
 
         $this->addAddress($customer, $order->getBillingAddress());
-        if (!$order->getShipments()->current()->getPickupId()) {
+        $shipment = $order->getShipments()->current();
+        if (!$shipment instanceof ShipmentInterface) {
+            return;
+        }
+
+        if (!$shipment->getPickupId()) {
             $this->addAddress($customer, $order->getShippingAddress());
         }
     }
